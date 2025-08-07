@@ -12,8 +12,7 @@ A estrategia utilizada:
 a esquerda e a direita do pivo. Para calcular essas somas de forma
 eficiente (em O(1)), usamos as tecnicas de somas prefixas e sufixas
 4. Apos encontrar a pontuacao maxima e o melhor pivo para cada candidato,
-uma ultima varredura determina o candidato vencedor geral, aplicando
-as regras de desempate.
+uma ultima varredura determina o candidato vencedor geral, aplicando as regras de desempate
 */
 #include <bits/stdc++.h>
 using namespace std;
