@@ -2,6 +2,11 @@
 
 using namespace std;
 
+/*
+
+*/
+
+//calcula por meio do resto se um numero e divisivel por outro na base binaria
 int resto(const string& m, int n){
     int rest = 0;
     for(char c : m){
@@ -10,14 +15,16 @@ int resto(const string& m, int n){
     return rest;
 }
 
-void backtracking(int pos, string& m, string& n, vector<int>& inM, vector<int>& inN){
+void backtracking(int pos, string m, string n, vector<int> inM, vector<int> inN){
    
+    //se todas as casas * que estavam em M e N foram preenchidas,
+    //entra para checar se valores sao validos
     if(pos == inM.size() + inN.size()){
         string M = m;
         string N = n;
 
         int divi = stoi(N, nullptr, 2);
-        
+        //volta pra recursao pois nenhum numero e divisivel por zero
         if(divi == 0)
             return;
 
@@ -27,14 +34,14 @@ void backtracking(int pos, string& m, string& n, vector<int>& inM, vector<int>& 
         }
         return;
     }
-    if(pos < inM.size()){
-        int i = inM[pos];
-        m[i] = '0';
-        backtracking(pos + 1, m, n, inM, inN);
+    if(pos < inM.size()){ //checa se e necessario preencher valores no M
+        int i = inM[pos]; //pego a posicao que precisa ser preenchida
+        m[i] = '0'; //coloco 0 nessa posicao
+        backtracking(pos + 1, m, n, inM, inN);//
         //cout << "chegou";
         m[i] = '1';
         backtracking(pos + 1, m, n, inM, inN);
-    }else{
+    }else{ //se n precisa no M, precisa no N
         int i = inN[pos - inM.size()];
         n[i] = '0';
         backtracking(pos + 1, m, n, inM, inN);
